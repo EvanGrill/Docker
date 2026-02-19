@@ -1,0 +1,5 @@
+# Exclude database directory and files left from build.
+/data/*
+
+# Include the html folder and its contents.
+!/data/html/
