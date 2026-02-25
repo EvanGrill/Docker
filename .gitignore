@@ -3,3 +3,11 @@
 
 # Ignore secrets
 .env
+
+# Ignore directories mounted in container
+**/data/**
+**/config/**
+
+# Include the above directories explicitly though
+!**/data
+!**/config

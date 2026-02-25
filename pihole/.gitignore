@@ -1,0 +1,2 @@
+# Exclude directory that isn't default
+/dnsmasq.d/*
