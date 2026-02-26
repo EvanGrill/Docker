@@ -1,0 +1,32 @@
+services:
+    pihole:
+        image: pihole/pihole:latest
+        container_name: pihole
+        hostname: pihole
+        env_file:
+            - ./.env
+        volumes:
+            - ./config/pihole:/etc/pihole
+            - ./dnsmasq.d:/etc/dnsmasq.d
+        ports:
+            - "80:80/tcp"
+            - "53:53/tcp"
+            - "53:53/udp"
+        restart: unless-stopped
+        networks:
+            - dns   
+
+    unbound:
+        image: mvance/unbound:latest
+        container_name: unbound
+        hostname: unbound
+        restart: unless-stopped
+        networks:
+            - dns
+        volumes:
+            - ./config/unbound:/etc/unbound
+        command: ["unbound", "-d", "-vv", "-c", "/etc/unbound/unbound.conf"]
+
+networks:
+    dns:
+        name: dns
