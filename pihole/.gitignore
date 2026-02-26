@@ -1,2 +1,7 @@
-# Exclude directory that isn't default
-/dnsmasq.d/*
+# Include directory that isn't default
+!dnsmasq.d
+
+# Include minimal Unbound configuration file.
+!config
+!config/unbound
+!config/pihole
